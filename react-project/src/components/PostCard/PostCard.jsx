@@ -1,8 +1,8 @@
-function PostCard(card) {
+function PostCard({card}) {
     return (
         <div className="post-card-wrapper">
             <div className="post-card-img">
-                <img src={image} />
+                <img src={card.image} />
             </div>
             <div className="post-card-description">
                 <p>{card.description}</p>

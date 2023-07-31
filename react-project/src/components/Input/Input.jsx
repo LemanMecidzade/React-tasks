@@ -1,7 +1,7 @@
-function Input() {
+function Input({placeholderText}) {
     return (
         <div>
-            <input type="text" placeholder="Search..." />
+            <input type="text" placeholder= {placeholderText} className = "search-btn"/>
         </div>
     );
 };

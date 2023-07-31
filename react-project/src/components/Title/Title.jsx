@@ -1,5 +1,5 @@
-function Title() {
-    return <h1>Anime World</h1>;
+function Title({title}) {
+    return <h1>{title}</h1>;
 };
 
 export default Title;
