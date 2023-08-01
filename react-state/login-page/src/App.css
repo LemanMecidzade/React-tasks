@@ -1,6 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  --default-font-family: "Poppins";
+}
+body {
+  background-image: url("./assets/sunset.png");
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login {
+  width: 478px;
+  height: 520px;
+  border-radius: 20px;
+  border: 2px solid #fff;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: -40.33333206176758px 40.33333206176758px 40.33333206176758px 0px
+      rgba(255, 255, 255, 0.1) inset,
+    40.33333206176758px -40.33333206176758px 40.33333206176758px 0px rgba(
+        0,
+        0,
+        0,
+        0.1
+      ) inset;
+  backdrop-filter: blur(40.33333206176758px);
+}
+h1 {
+  color: #fff;
+  font-family: var(--default-font-family);
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 40px;
+}
+.inputs {
+  width: 80%;
+  margin: 30px 0;
+  border: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  background-color: transparent;
+  outline: none;
+  font-family: var(--default-font-family);
+  font-size: 16px;
+  font-weight: 400;
+}
+button {
+  color: #fff;
+  font-family: var(--default-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  width: 250px;
+  height: 48px;
+  border: none;
+  border-radius: 20px;
+  background-color: #db5f19;
+  cursor: pointer;
+}
+.checkbox {
+  color: #fff;
+  font-family: var(--default-font-family);
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 400;
+  cursor: pointer;
+  margin: 35px 0;
 }

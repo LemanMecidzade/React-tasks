@@ -3,9 +3,8 @@ import Title from '../../components/Title/Title';
 import Input from '../../components/Input/Input';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import Button from '../../components/Button/Button';
-import HomePage  from '../Home-Page/Home-Page';
 
-const LoginPage = () => {
+const LoginPage = ({handleLoginApp}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -19,14 +18,14 @@ const LoginPage = () => {
 
     const handleLogin = () => {
         if (username == 'root' && password == 'pwd') {
-            console.log("Logged in!");
+            handleLoginApp();
         } else {
-            console.log("Invalid credentials!")
+            alert("Invalid credentials!")
         }
     };
 
     return (
-        <div>
+        <div className='login'>
             <Title />
             <Input type="text" placeholder="User Name" onChange={handleUsernameChange} />
             <Input type="password" placeholder="Password" onChange={handlePasswordChange} />

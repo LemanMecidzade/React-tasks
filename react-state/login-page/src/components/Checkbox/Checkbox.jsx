@@ -1,7 +1,8 @@
 const Checkbox = () => {
     return (
-        <div>
-            <input type="checkbox"/>
+        <div className="checkbox">
+            <input type="checkbox" id="check"/>
+            <label for="check">I agree to the terms and conditions</label>
         </div>
     );
 };

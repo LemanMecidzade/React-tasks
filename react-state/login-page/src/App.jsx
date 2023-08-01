@@ -12,7 +12,7 @@ function App() {
   }
   return (
     <div>
-      {isLoggedIn ? <HomePage /> : <LoginPage/>}
+      {isLoggedIn ? <HomePage /> : <LoginPage handleLoginApp={handleLogin}/>}
     </div>
   );
 };
