@@ -1,46 +1,73 @@
-import {useState,useEffect,useRef} from 'react'
+import { useState, useEffect, useRef, useCallback } from "react";
+import Box from "./Box";
+import { useTodoContext } from "../context/useTodoContext/useTodoContext";
 
 const TodoForm = (props) => {
+  const { todos, addTodo } = useTodoContext();
+  const [input, setInput] = useState(props.edit ? props.edit.value : "");
+  const inputRef = useRef(null);
 
-    const[input,setInput] = useState(props.edit ? props.edit.value : '')
+  //On mount, focus input element
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
-    const inputRef = useRef(null)
+  const handleChange = useCallback((e) => {
+    setInput(e.target.value);
+  }, []);
 
-    useEffect(() => {
-        inputRef.current.focus()
-    })
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      const value = e.target.text.value;
+      addTodo({
+        id: Math.floor(Math.random() * 1000),
+        text: value,
+      });
 
-    const handleChange = e =>{
-        setInput(e.target.value);
-    };
-
-    const handleSubmit = e =>{
-        e.preventDefault();
-
-        props.onSubmit({
-            id:Math.floor(Math.random() * 1000),
-            text: input
-        })
-
-        setInput("");
-    };
+      setInput("");
+      inputRef.current.focus();
+    },
+    [addTodo]
+  );
 
   return (
-    <form className='todo-form' onSubmit={handleSubmit}>
+    <>
+      <p>Count: {todos.length}</p>
+      <form className="todo-form" onSubmit={handleSubmit}>
         {props.edit ? (
-            <>
-            <input type="text" placeholder='Update the task' value={input} name="text" className='todo-input edit'onChange={handleChange} ref={inputRef}/>
+          <>
+            <input
+              autoComplete="off"
+              type="text"
+              placeholder="Update the task"
+              value={input}
+              name="text"
+              className="todo-input edit"
+              onChange={handleChange}
+              ref={inputRef}
+            />
             <button className="todo-button edit">Update</button>
-            </>
-        ):
-        (
-            <>
-            <input type="text" placeholder='Add a task' value={input} name="text" className='todo-input'onChange={handleChange} ref={inputRef}/>
-        <button className="todo-button">Add a task</button>
-        </>
+          </>
+        ) : (
+          <>
+            <input
+              autoComplete="off"
+              type="text"
+              placeholder="Add a task"
+              value={input}
+              name="text"
+              className="todo-input"
+              onChange={handleChange}
+              ref={inputRef}
+            />
+            <button className="todo-button">Add a task</button>
+            <Box handleChange={handleChange} />
+          </>
         )}
-    </form>
-  )
-}
+      </form>
+    </>
+  );
+};
 
-export default TodoForm
+export default TodoForm;
